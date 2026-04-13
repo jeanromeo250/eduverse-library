@@ -53,7 +53,7 @@ function AppRoutes() {
       <Route path="/admin/stock" element={<ProtectedRoute allowedRoles={["admin"]}><AdminStockPage /></ProtectedRoute>} />
       <Route path="/admin/accounts" element={<ProtectedRoute allowedRoles={["admin"]}><AdminAccountsPage /></ProtectedRoute>} />
       <Route path="/admin/reports" element={<ProtectedRoute allowedRoles={["admin"]}><AdminReportsPage /></ProtectedRoute>} />
-      <Route path="/admin/notifications" element={<ProtectedRoute allowedRoles={["admin"]}><AdminNotificationsPage /></ProtectedRoute>} />
+      <Route path="/admin/notifications" element={<ProtectedRoute allowedRoles={["admin"]}><NotificationsPage /></ProtectedRoute>} />
       <Route path="/admin/settings" element={<ProtectedRoute allowedRoles={["admin"]}><SettingsPage /></ProtectedRoute>} />
       <Route path="/library" element={<ProtectedRoute allowedRoles={["librarian"]}><LibraryDashboard /></ProtectedRoute>} />
       <Route path="/library/school-info" element={<ProtectedRoute allowedRoles={["librarian"]}><SchoolInfoPage /></ProtectedRoute>} />
