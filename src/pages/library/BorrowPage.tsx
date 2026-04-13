@@ -10,7 +10,7 @@ import { useData } from "@/contexts/DataContext";
 import { toast } from "sonner";
 
 export default function BorrowPage() {
-  const { students, teachers, books, setBooks, borrowRecords, setBorrowRecords, departments } = useData();
+  const { students, teachers, books, setBooks, borrowRecords, setBorrowRecords, departments, levels, classes } = useData();
   const [tab, setTab] = useState("student");
 
   // Student borrow
@@ -103,8 +103,14 @@ export default function BorrowPage() {
                 <SelectTrigger className="bg-secondary border-border"><SelectValue placeholder="Department" /></SelectTrigger>
                 <SelectContent>{departments.map(d => <SelectItem key={d.id} value={d.name}>{d.name}</SelectItem>)}</SelectContent>
               </Select>
-              <Input value={sLevel} onChange={e => setSLevel(e.target.value)} placeholder="Level" className="bg-secondary border-border" />
-              <Input value={sClass} onChange={e => setSClass(e.target.value)} placeholder="Class" className="bg-secondary border-border" />
+              <Select value={sLevel} onValueChange={setSLevel}>
+                <SelectTrigger className="bg-secondary border-border"><SelectValue placeholder="Level" /></SelectTrigger>
+                <SelectContent>{levels.map(l => <SelectItem key={l.id} value={l.name}>{l.name}</SelectItem>)}</SelectContent>
+              </Select>
+              <Select value={sClass} onValueChange={setSClass}>
+                <SelectTrigger className="bg-secondary border-border"><SelectValue placeholder="Class" /></SelectTrigger>
+                <SelectContent>{classes.map(c => <SelectItem key={c.id} value={c.name}>{c.name}</SelectItem>)}</SelectContent>
+              </Select>
               <Input value={sSearch} onChange={e => setSSearch(e.target.value)} placeholder="Search name/ID" className="bg-secondary border-border" />
             </div>
             {filteredStudents.length > 0 && (
