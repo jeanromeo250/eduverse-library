@@ -30,7 +30,7 @@ export default function SettingsPage() {
       toast.error("Password must be at least 4 characters");
       return;
     }
-    const success = changePassword(oldPassword, newPassword);
+    const success = await changePassword(newPassword);
     if (success) {
       toast.success("Password changed successfully");
       setOldPassword("");
