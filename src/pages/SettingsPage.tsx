@@ -20,7 +20,7 @@ export default function SettingsPage() {
     toast.success("Phone number updated successfully");
   };
 
-  const handleChangePassword = (e: React.FormEvent) => {
+  const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
       toast.error("Passwords do not match");

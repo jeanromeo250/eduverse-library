@@ -19,7 +19,7 @@ export default function AdminAccountsPage() {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState<"librarian" | "stock_manager" | "">("");
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     if (!fullName || !email || !phone || !role || !username || !password) {
       toast.error("Fill all fields including username and password");
       return;
