@@ -14,7 +14,7 @@ export interface User {
 interface AuthContextType {
   user: User | null;
   login: (username: string, password: string) => boolean;
-  register: (username: string, password: string, fullName: string, email: string, phone: string) => boolean;
+  register: (username: string, password: string, fullName: string, email: string, phone: string, role?: UserRole) => boolean;
   logout: () => void;
   isAuthenticated: boolean;
   updateUser: (updates: Partial<User>) => void;
@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return false;
   };
 
-  const register = (username: string, password: string, fullName: string, email: string, phone: string): boolean => {
+  const register = (username: string, password: string, fullName: string, email: string, phone: string, role: UserRole = "admin"): boolean => {
     if (users[username]) return false;
     const newUser: User = {
       id: Date.now().toString(),
@@ -59,7 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       fullName,
       email,
       phone,
-      role: "admin",
+      role,
     };
     setUsers(prev => ({ ...prev, [username]: { password, user: newUser } }));
     return true;
